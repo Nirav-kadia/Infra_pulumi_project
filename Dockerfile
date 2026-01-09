@@ -20,11 +20,11 @@ COPY . /code/
 # Ensure entrypoint is executable
 RUN if [ -f /code/docker/entrypoint.sh ]; then chmod +x /code/docker/entrypoint.sh; fi
 
-EXPOSE 8000
+EXPOSE 8080
 
 ENTRYPOINT ["/code/docker/entrypoint.sh"]
 
-CMD ["gunicorn", "demo_project.wsgi:application", "--bind", "0.0.0.0:8000"]
+CMD ["gunicorn", "demo_project.wsgi:application", "--bind", "0.0.0.0:8080"]
 
 # Multi-stage Dockerfile for Django SSR (builder + slim runtime)
 FROM python:3.11-slim AS builder
@@ -76,7 +76,7 @@ RUN [ -f /app/docker/entrypoint.sh ] && chmod +x /app/docker/entrypoint.sh || tr
 
 USER app
 
-EXPOSE 8000
+EXPOSE 8080
 
 ENTRYPOINT ["/app/docker/entrypoint.sh"]
-CMD ["gunicorn", "demo_project.wsgi:application", "--bind", "0.0.0.0:8000", "--workers", "3"]
+CMD ["gunicorn", "demo_project.wsgi:application", "--bind", "0.0.0.0:8080", "--workers", "3"]
