@@ -42,6 +42,6 @@ jobs:
         with:
           command: up
           stack-name: ${{ env.PULUMI_STACK }}
-          work-dir: infra
+          work-dir: pulumi-infra
         env:
           PULUMI_ACCESS_TOKEN: ${{ secrets.PULUMI_ACCESS_TOKEN }}
