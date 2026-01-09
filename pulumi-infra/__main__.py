@@ -197,5 +197,6 @@ service = aws.ecs.Service(
 # OUTPUTS
 # ---------------------------
 pulumi.export("ecr_url", repo.repository_url)
-pulumi.export("alb_url", alb.dns_name)
+pulumi.export("cluster_name", cluster.name)
 pulumi.export("service_name", service.name)
+pulumi.export("alb_url", alb.dns_name)
